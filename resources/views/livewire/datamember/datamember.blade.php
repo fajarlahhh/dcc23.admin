@@ -1,7 +1,7 @@
 <div>
     <div class="content-header">
         <div class="container-fluid">
-            <h1 class="m-0">Data Member</h1>
+            <h1 class="m-0">Member</h1>
         </div>
     </div>
     <x-info />
@@ -25,7 +25,7 @@
                     </div>
                 </div>
                 <div class="card-body table-responsive">
-                    <table class="table table-hover text-nowrap">
+                    <table class="table table-bordered table-hover text-nowrap">
                         <thead>
                             <tr>
                                 <th style="width: 10px">#</th>
@@ -49,7 +49,6 @@
                         </thead>
                         <tbody>
                             @foreach ($data as $index => $row)
-                                <tr>
                                 <tr>
                                     <td>
                                         {{ ++$no }}</td>
@@ -110,7 +109,6 @@
                                             @endif
                                         @endif
                                     </td>
-                                </tr>
                                 </tr>
                             @endforeach
                         </tbody>

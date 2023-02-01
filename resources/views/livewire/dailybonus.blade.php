@@ -4,8 +4,6 @@
             <h1 class="m-0">Daily Bonus</h1>
         </div>
     </div>
-    <x-info />
-    <x-alert />
 
     <section class="content">
         <div class="container-fluid">
@@ -37,7 +35,7 @@
             @endif
             <div class="card card-default color-palette-box">
                 <div class="card-body table-responsive">
-                    <table class="table table-hover text-nowrap">
+                    <table class="table table-bordered table-hover text-nowrap">
                         <thead>
                             <tr>
                                 <th style="width: 10px">#</th>
@@ -77,6 +75,8 @@
                     </div>
                 </div>
             </div>
+            <x-info />
+            <x-alert />
         </div>
     </section>
 </div>

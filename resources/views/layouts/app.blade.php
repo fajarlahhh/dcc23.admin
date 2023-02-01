@@ -87,7 +87,7 @@
                             <a href="#" class="nav-link  @if (strpos($currentUrl, '/datamember') === 0 || strpos($currentUrl, '/datakasbon') === 0) active @endif">
                                 <i class="nav-icon fas fa-circle"></i>
                                 <p>
-                                    Data Member
+                                    Member Data
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
@@ -132,8 +132,25 @@
                                 </p>
                             </a>
                         </li>
+                        @if (auth()->user()->username == 'admin')
+                            <li class="nav-item">
+                                <a href="/dataadmin" class="nav-link @if (strpos($currentUrl, '/dailybonus') === 0) active @endif">
+                                    <i class="nav-icon  fas fa-circle"></i>
+                                    <p>
+                                        Admin Data
+                                    </p>
+                                </a>
+                            </li>
+                        @endif
                         <hr style="background: white">
 
+                        <li class="nav-item">
+                            <a href="/changepassword" class="nav-link bg-yellow">
+                                <p>
+                                    Change Password
+                                </p>
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a href="javascript:;"
                                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
@@ -151,9 +168,6 @@
         <div class="content-wrapper">
             {{ $slot }}
         </div>
-        <x-modal title='Password'>
-            @livewire('form.password')
-        </x-modal>
 
         <footer class="main-footer">
             <strong>Copyright &copy; 2023 <a href="https://dcc23.com">DCC23</a>.</strong>
@@ -167,7 +181,6 @@
         </aside>
     </div>
 
-    @livewire('form.createpassword')
     @livewireScripts
 
     <!-- jQuery -->

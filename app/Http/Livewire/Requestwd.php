@@ -9,6 +9,7 @@ use Livewire\WithPagination;
 class Requestwd extends Component
 {
     use WithPagination;
+    protected $paginationTheme = 'bootstrap';
     public $status = 1, $year, $month, $process, $txid;
 
     protected $queryString = ['status', 'year', 'month'];
@@ -35,8 +36,8 @@ class Requestwd extends Component
     public function render()
     {
         return view('livewire.requestwd', [
-            // 'i' => ($this->page - 1) * 10,
-            'data' => Withdrawal::with('user')->when($this->status == 1, fn($q) => $q->whereNull('processed_at'))->when($this->status == 2, fn($q) => $q->where('processed_at', 'like', $this->year . '-' . $this->month . '%'))->orderBy('created_at')->get(),
+            'i' => ($this->page - 1) * 10,
+            'data' => Withdrawal::with('user')->when($this->status == 1, fn($q) => $q->whereNull('processed_at'))->when($this->status == 2, fn($q) => $q->where('processed_at', 'like', $this->year . '-' . $this->month . '%'))->orderBy('created_at')->paginate(10),
         ]);
     }
 }

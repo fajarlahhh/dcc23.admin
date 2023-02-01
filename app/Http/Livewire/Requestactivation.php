@@ -14,7 +14,9 @@ use Livewire\WithPagination;
 class Requestactivation extends Component
 {
     use WithPagination;
-    public $cari, $activate, $delete, $upline;
+    protected $paginationTheme = 'bootstrap';
+    public $cari, $activate, $delete, $upline, $status = 1, $date;
+    protected $queryString = ['date', 'status'];
 
     public function setUpline($id, $team)
     {
@@ -188,9 +190,12 @@ class Requestactivation extends Component
 
     public function render()
     {
+        if ($this->status == 1) {
+            $this->date = null;
+        }
         return view('livewire.requestactivation', [
             'i' => ($this->page - 1) * 10,
-            'data' => Deposit::with('user')->whereNotNull('registration')->whereNull('processed_at')->orderBy('created_at')->paginate(10),
+            'data' => Deposit::with('user')->when($this->status == 2, fn($q) => $q->where('processed_at', 'like', $this->date . '%'))->whereNotNull('registration')->when($this->status == 1, fn($q) => $q->whereNull('processed_at'))->orderBy('created_at')->paginate(10),
         ]);
     }
 }

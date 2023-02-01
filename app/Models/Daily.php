@@ -9,4 +9,9 @@ class Daily extends Model
 {
     use HasFactory;
     protected $table = 'daily';
+
+    public function admin()
+    {
+        return $this->belongsTo(Admin::class)->withTrashed();
+    }
 }

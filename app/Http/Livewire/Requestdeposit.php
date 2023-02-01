@@ -11,6 +11,7 @@ use Livewire\WithPagination;
 class Requestdeposit extends Component
 {
     use WithPagination;
+    protected $paginationTheme = 'bootstrap';
     public $status = 1, $year, $month, $process, $delete;
     protected $queryString = ['status', 'year', 'month'];
 
@@ -24,7 +25,7 @@ class Requestdeposit extends Component
         $this->delete = $delete;
     }
 
-    public function doDelete()
+    public function delete()
     {
         Deposit::whereId($this->delete)->delete();
     }
@@ -55,8 +56,8 @@ class Requestdeposit extends Component
     public function render()
     {
         return view('livewire.requestdeposit', [
-            // 'i' => ($this->page - 1) * 10,
-            'data' => Deposit::with('user')->when($this->status == 1, fn($q) => $q->whereNull('processed_at'))->when($this->status == 2, fn($q) => $q->where('processed_at', 'like', $this->year . '-' . $this->month . '%'))->whereNotNull('from_wallet')->whereNull('registration')->orderBy('created_at')->get(),
+            'i' => ($this->page - 1) * 10,
+            'data' => Deposit::with('user')->when($this->status == 1, fn($q) => $q->whereNull('processed_at'))->when($this->status == 2, fn($q) => $q->where('processed_at', 'like', $this->year . '-' . $this->month . '%'))->whereNotNull('from_wallet')->whereNull('registration')->orderBy('created_at')->paginate(10),
         ]);
     }
 }

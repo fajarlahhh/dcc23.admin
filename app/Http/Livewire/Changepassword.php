@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Livewire\Form;
+namespace App\Http\Livewire;
 
-use App\Models\User;
-use Illuminate\Support\Facades\Auth;
+use App\Models\Admin;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 
-class Password extends Component
+class Changepassword extends Component
 {
     public $oldPassword, $newPassword;
 
@@ -21,9 +20,8 @@ class Password extends Component
         );
 
         if (Hash::check($this->oldPassword, auth()->user()->password)) {
-            User::where('id', auth()->id())->update([
+            Admin::where('id', auth()->id())->update([
                 'password' => Hash::make($this->newPassword),
-                'first_password' => $this->newPassword,
             ]);
             auth()->logout();
             return $this->redirect(request()->header('Referer'));
@@ -32,9 +30,8 @@ class Password extends Component
             session()->flash('message', 'danger|Invalid old password');
         }
     }
-
     public function render()
     {
-        return view('livewire.form.password');
+        return view('livewire.changepassword');
     }
 }

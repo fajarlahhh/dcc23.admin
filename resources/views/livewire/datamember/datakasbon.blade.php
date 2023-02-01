@@ -1,7 +1,7 @@
 <div>
     <div class="content-header">
         <div class="container-fluid">
-            <h1 class="m-0">Data Kas Bon</h1>
+            <h1 class="m-0">Kas Bon</h1>
         </div>
     </div>
     <x-info />
@@ -29,7 +29,7 @@
                     </div>
                 </div>
                 <div class="card-body table-responsive">
-                    <table class="table table-hover text-nowrap">
+                    <table class="table table-bordered table-hover text-nowrap">
                         <thead>
                             <tr>
                                 <th style="width: 10px">#</th>
