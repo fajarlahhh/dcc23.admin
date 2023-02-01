@@ -9,9 +9,12 @@ use App\Models\UserView;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Dailybonus extends Component
 {
+    use WithPagination;
+    protected $paginationTheme = 'bootstrap';
     public $daily = [], $delete;
 
     public function submit()
@@ -45,7 +48,7 @@ class Dailybonus extends Component
                 }
             }
         });
-        $this->booted();
+        return redirect('/dailybonus');
     }
 
     public function setDelete($delete = null)
@@ -85,7 +88,8 @@ class Dailybonus extends Component
     public function render()
     {
         return view('livewire.dailybonus', [
-            'data' => Daily::orderBy('created_at', 'desc')->limit(10)->get(),
+            'no' => ($this->page - 1) * 10,
+            'data' => Daily::orderBy('created_at', 'desc')->limit(10)->paginate(10),
         ]);
     }
 }

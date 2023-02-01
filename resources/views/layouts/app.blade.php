@@ -1,246 +1,207 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 
 <head>
-    <title>DCC23</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="DCC23">
-    <meta name="keywords" content="DCC23">
-    <meta name="author" content="LEFT4CODE">
-    <link href="/dist/images/logo.png" rel="shortcut icon">
-    <link rel="stylesheet" href="/dist/css/app.css" />
-    @stack('styles')
+    <title>DCC23 | Admin</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Tempusdominus Bootstrap 4 -->
+    <link rel="stylesheet" href="/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- JQVMap -->
+    <link rel="stylesheet" href="/plugins/jqvmap/jqvmap.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/dist/css/adminlte.min.css">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="/plugins/daterangepicker/daterangepicker.css">
+    <!-- summernote -->
+    <link rel="stylesheet" href="/plugins/summernote/summernote-bs4.min.css">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="/plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
     @livewireStyles
 </head>
 
-<body class="main">
-    <div class="mobile-menu md:hidden">
-        <div class="mobile-menu-bar">
-            <a href="" class="flex mr-auto">
-                <img alt="Icewall Tailwind HTML Admin Template" class="w-6" src="/dist/images/logo.png">
-            </a>
-            <a href="javascript:;" id="mobile-menu-toggler"> <i data-feather="bar-chart-2"
-                    class="w-8 h-8 text-white transform -rotate-90"></i> </a>
-        </div>
-        <ul class="border-t border-theme-2 py-5 hidden">
-            <li>
-                <a href="/dashboard" class="menu">
-                    <div class="menu__icon"> <i data-feather="home"></i> </div>
-                    <div class="menu__title"> Dashboard </div>
-                </a>
-            </li>
-            <li>
-                <a href="/balance" class="menu">
-                    <div class="menu__icon"> <i data-feather="dollar-sign"></i> </div>
-                    <div class="menu__title"> Balance </div>
-                </a>
-            </li>
-            <li>
-                <a href="/bonus" class="menu">
-                    <div class="menu__icon"> <i data-feather="gift"></i> </div>
-                    <div class="menu__title"> Bonus </div>
-                </a>
-            </li>
-            <li>
-                <a href="/downline" class="menu">
-                    <div class="menu__icon"> <i data-feather="users"></i> </div>
-                    <div class="menu__title"> Downline </div>
-                </a>
-            </li>
-            @if (auth()->user()->upline_id == null)
-                <hr>
-                <li>
-                    <a href="/dailybonus" class="menu">
-                        <div class="menu__icon"> <i data-feather="calendar"></i> </div>
-                        <div class="menu__title">
-                            Daily Bonus </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="/datamember" class="menu">
-                        <div class="menu__icon"> <i data-feather="command"></i> </div>
-                        <div class="menu__title"> Data Member </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="/requestactivation" class="menu">
-                        <div class="menu__icon"> <i data-feather="star"></i> </div>
-                        <div class="menu__title"> Request Activation </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="/requestdeposit" class="menu">
-                        <div class="menu__icon"> <i data-feather="codepen"></i> </div>
-                        <div class="menu__title"> Request Deposit </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="/requestwd" class="menu">
-                        <div class="menu__icon"> <i data-feather="bookmark"></i> </div>
-                        <div class="menu__title"> Request WD </div>
-                    </a>
-                </li>
-            @endif
-        </ul>
-    </div>
-    <div class="top-bar-boxed border-b border-theme-2 -mt-7 md:-mt-5 -mx-3 sm:-mx-8 px-3 sm:px-8 md:pt-0 mb-12">
-        <div class="h-full flex items-center">
-            <!-- BEGIN: Logo -->
-            <a href="" class="-intro-x hidden md:flex">
-                <img alt="Icewall Tailwind HTML Admin Template" class="w-6" src="/dist/images/logo.png">
-                <span class="text-white text-lg ml-3"> DCC<span class="font-medium">23</span> </span>
-            </a>
-            <!-- END: Logo -->
-            <!-- BEGIN: Breadcrumb -->
-            <div class="-intro-x breadcrumb mr-auto">
-            </div>
-            <!-- END: Breadcrumb -->
-            <!-- BEGIN: Account Menu -->
-            <div class="intro-x mr-3 text-red">
-                <button class="btn btn-sm btn-secondary mr-1 mt-2 mb-2" disabled>Hy, {{ auth()->user()->name }}
-                    ({{ auth()->user()->username }})</button>
-            </div>
-            <div class="intro-x dropdown w-8 h-8">
-                <div class="dropdown-toggle w-8 h-8 rounded-full overflow-hidden shadow-lg image-fit zoom-in scale-110"
-                    role="button" aria-expanded="false">
-                    <img alt="Icewall Tailwind HTML Admin Template" src="/dist/images/profile-4.jpg">
-                </div>
-                <div class="dropdown-menu w-56">
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
 
-                    <div class="dropdown-menu__content box bg-theme-11 dark:bg-dark-6 text-white">
-                        <div class="p-4 border-b border-theme-12 dark:border-dark-3">
-                            <div class="font-medium">{{ auth()->user()->name }}</div>
-                            <div class="text-xs text-theme-13 mt-0.5 dark:text-gray-600">
-                                {{ auth()->user()->package->name }}</div>
-                        </div>
-                        <div class="p-2">
-                            <a href="javascript:;" data-toggle="modal" data-target="#modal-profile"
-                                class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 dark:hover:bg-dark-3 rounded-md">
-                                <i data-feather="user" class="w-4 h-4 mr-2"></i> Profile
-                            </a>
-                            <a href="javascript:;" data-toggle="modal" data-target="#modal-pin"
-                                class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 dark:hover:bg-dark-3 rounded-md"><i
-                                    data-feather="key" class="w-4 h-4 mr-2"></i> Change PIN
-                            </a>
-                            <a href="javascript:;" data-toggle="modal" data-target="#modal-password"
-                                class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 dark:hover:bg-dark-3 rounded-md"><i
-                                    data-feather="lock" class="w-4 h-4 mr-2"></i> Change Password
-                            </a>
-                        </div>
-                        <div class="p-2 border-t border-theme-12 dark:border-dark-3">
-                            <a href="javascript:;"
-                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-                                class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 dark:hover:bg-dark-3 rounded-md"><i
-                                    data-feather="toggle-right" class="w-4 h-4 mr-2"></i>Logout</a>
-                            <form id="logout-form" action="/logout" method="POST" style="display: none;">
-                            </form>
-                        </div>
+        <div class="preloader flex-column justify-content-center align-items-center">
+            <img class="animation__shake" src="/dist/img/logo.png" alt="" height="60" width="60">
+        </div>
+
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
+                            class="fas fa-bars"></i></a>
+                </li>
+            </ul>
+        </nav>
+
+        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+            <a href="/" class="brand-link">
+                <img src="/dist/img/logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+                    style="opacity: .8">
+                <span class="brand-text font-weight-light">Admin DCC23</span>
+            </a>
+            <div class="sidebar">
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                    <div class="info">
+                        <a href="#" class="d-block">{{ strtoupper(auth()->user()->username) }}</a>
                     </div>
                 </div>
+
+                @php
+                    $currentUrl = '/' . Request::path();
+                @endphp
+                <!-- Sidebar Menu -->
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                        data-accordion="false">
+                        <li class="nav-item">
+                            <a href="/dashboard" class="nav-link @if (strpos($currentUrl, '/dashboard') === 0) active @endif">
+                                <i class="nav-icon  fas fa-circle"></i>
+                                <p>
+                                    Dashboard
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/dailybonus" class="nav-link @if (strpos($currentUrl, '/dailybonus') === 0) active @endif">
+                                <i class="nav-icon  fas fa-circle"></i>
+                                <p>
+                                    Daily Bonus
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item @if (strpos($currentUrl, '/datamember') === 0 || strpos($currentUrl, '/datakasbon') === 0) menu-open @endif">
+                            <a href="#" class="nav-link  @if (strpos($currentUrl, '/datamember') === 0 || strpos($currentUrl, '/datakasbon') === 0) active @endif">
+                                <i class="nav-icon fas fa-circle"></i>
+                                <p>
+                                    Data Member
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="/datamember"
+                                        class="nav-link @if (strpos($currentUrl, '/datamember') === 0) active @endif">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Member</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/datakasbon"
+                                        class="nav-link @if (strpos($currentUrl, '/datakasbon') === 0) active @endif">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Kas Bon</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/requestactivation" class="nav-link">
+                                <i class="nav-icon  fas fa-circle"></i>
+                                <p>
+                                    Req. Activation
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/requestdeposit" class="nav-link">
+                                <i class="nav-icon  fas fa-circle"></i>
+                                <p>
+                                    Req. Deposit
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/requestwd" class="nav-link">
+                                <i class="nav-icon  fas fa-circle"></i>
+                                <p>
+                                    Req. WD
+                                </p>
+                            </a>
+                        </li>
+                        <hr style="background: white">
+
+                        <li class="nav-item">
+                            <a href="javascript:;"
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                                class="nav-link bg-red"></i>Logout</a>
+                            <form id="logout-form" action="/logout" method="POST" style="display: none;">
+                            </form>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- /.sidebar-menu -->
             </div>
-            <!-- END: Account Menu -->
+            <!-- /.sidebar -->
+        </aside>
+
+        <div class="content-wrapper">
+            {{ $slot }}
         </div>
-    </div>
-    <div class="wrapper">
-        <div class="wrapper-box">
-            <!-- BEGIN: Side Menu -->
-            <nav class="side-nav">
-                <ul>
-                    <li>
-                        <a href="/dashboard" class="side-menu">
-                            <div class="side-menu__icon"> <i data-feather="home"></i> </div>
-                            <div class="side-menu__title"> Dashboard </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/balance" class="side-menu">
-                            <div class="side-menu__icon"> <i data-feather="dollar-sign"></i> </div>
-                            <div class="side-menu__title"> Balance </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/bonus" class="side-menu">
-                            <div class="side-menu__icon"> <i data-feather="gift"></i> </div>
-                            <div class="side-menu__title"> Bonus </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/downline" class="side-menu">
-                            <div class="side-menu__icon"> <i data-feather="users"></i> </div>
-                            <div class="side-menu__title"> Downline </div>
-                        </a>
-                    </li>
-                    @if (auth()->user()->upline_id == null)
-                        <hr>
-                        <li>
-                            <a href="/dailybonus" class="side-menu">
-                                <div class="side-menu__icon"> <i data-feather="calendar"></i> </div>
-                                <div class="side-menu__title">
-                                    Daily Bonus </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/datamember" class="side-menu">
-                                <div class="side-menu__icon"> <i data-feather="command"></i> </div>
-                                <div class="side-menu__title"> Data Member </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/requestactivation" class="side-menu">
-                                <div class="side-menu__icon"> <i data-feather="star"></i> </div>
-                                <div class="side-menu__title"> Request Activation </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/requestdeposit" class="side-menu">
-                                <div class="side-menu__icon"> <i data-feather="codepen"></i> </div>
-                                <div class="side-menu__title"> Request Deposit </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/requestwd" class="side-menu">
-                                <div class="side-menu__icon"> <i data-feather="bookmark"></i> </div>
-                                <div class="side-menu__title"> Request WD </div>
-                            </a>
-                        </li>
-                    @endif
-                </ul>
-            </nav>
-            <!-- END: Side Menu -->
-            <!-- BEGIN: Content -->
-            <div class="content">
-                @if (!auth()->user()->pin)
-                    @livewire('form.createpin')
-                @endif
-                @if (!auth()->user()->wallet)
-                    @livewire('form.createwallet')
-                @endif
-                @if (auth()->user()->package->benefit +
-                    auth()->user()->bonus->where('amount', '<', 0)->sum('amount') <
-                    auth()->user()->package->minimum_withdrawal)
-                    @livewire('form.reinvest')
-                @endif
-                @livewire('form.createpassword')
-                {{ $slot }}
+        <x-modal title='Password'>
+            @livewire('form.password')
+        </x-modal>
+
+        <footer class="main-footer">
+            <strong>Copyright &copy; 2023 <a href="https://dcc23.com">DCC23</a>.</strong>
+            All rights reserved.
+            <div class="float-right d-none d-sm-inline-block">
+                <b>Version</b> 1
             </div>
-            <!-- END: Content -->
-        </div>
+        </footer>
+
+        <aside class="control-sidebar control-sidebar-dark">
+        </aside>
     </div>
 
-    <x-modal title='Password'>
-        @livewire('form.password')
-    </x-modal>
-    <x-modal title='Profile'>
-        @livewire('form.profile')
-    </x-modal>
-    <x-modal title='Pin'>
-        @livewire('form.pin')
-    </x-modal>
-
+    @livewire('form.createpassword')
     @livewireScripts
 
-    <script src="/dist/js/app.js"></script>
+    <!-- jQuery -->
+    <script src="/plugins/jquery/jquery.min.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+        $.widget.bridge('uibutton', $.ui.button)
+    </script>
+    <!-- Bootstrap 4 -->
+    <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- ChartJS -->
+    <script src="/plugins/chart.js/Chart.min.js"></script>
+    <!-- Sparkline -->
+    <script src="/plugins/sparklines/sparkline.js"></script>
+    <!-- JQVMap -->
+    <script src="/plugins/jqvmap/jquery.vmap.min.js"></script>
+    <script src="/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+    <!-- jQuery Knob Chart -->
+    <script src="/plugins/jquery-knob/jquery.knob.min.js"></script>
+    <!-- daterangepicker -->
+    <script src="/plugins/moment/moment.min.js"></script>
+    <script src="/plugins/daterangepicker/daterangepicker.js"></script>
+    <!-- Tempusdominus Bootstrap 4 -->
+    <script src="/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+    <!-- Summernote -->
+    <script src="/plugins/summernote/summernote-bs4.min.js"></script>
+    <!-- overlayScrollbars -->
+    <script src="/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="/dist/js/adminlte.js"></script>
+    <!-- Select2 -->
+    <script src="/plugins/select2/js/select2.full.min.js"></script>
     @stack('scripts')
 </body>
 

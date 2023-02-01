@@ -20,6 +20,7 @@ class User extends Authenticatable
         'password',
         'wallet',
         'pin',
+        'kas_bon',
     ];
 
     /**

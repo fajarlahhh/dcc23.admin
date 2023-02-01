@@ -25,6 +25,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/requestdeposit', \App\Http\Livewire\Requestdeposit::class);
         Route::get('/requestwd', \App\Http\Livewire\Requestwd::class);
         Route::get('/requestactivation', \App\Http\Livewire\Requestactivation::class);
-        Route::get('/datamember', \App\Http\Livewire\Datamember::class);
+        Route::get('/datamember', \App\Http\Livewire\Datamember\Datamember::class);
+        Route::get('/datakasbon', \App\Http\Livewire\Datamember\Datakasbon::class);
     });
 });
