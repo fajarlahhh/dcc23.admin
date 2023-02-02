@@ -25,6 +25,7 @@ class Dailybonus extends Component
                     $daily = new Daily();
                     $daily->date = $row['date'];
                     $daily->amount = $row['bonus'];
+                    $daily->admin_id = auth()->id();
                     $daily->save();
 
                     $bonus = [];

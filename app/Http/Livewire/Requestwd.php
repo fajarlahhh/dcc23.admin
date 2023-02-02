@@ -23,6 +23,7 @@ class Requestwd extends Component
     {
         $wd = Withdrawal::findOrFail($this->process);
         $wd->processed_at = now();
+        $wd->admin_id = auth()->id();
         $wd->txid = $this->txid;
         $wd->save();
     }

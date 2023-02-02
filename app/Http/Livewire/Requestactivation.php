@@ -47,6 +47,7 @@ class Requestactivation extends Component
 
             $deposit = Deposit::findOrFail($this->activate);
             $deposit->processed_at = now();
+            $deposit->admin_id = auth()->id();
             $deposit->save();
 
             $user = User::findOrFail($deposit->user_id);

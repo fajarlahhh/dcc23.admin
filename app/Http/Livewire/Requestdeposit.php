@@ -36,6 +36,7 @@ class Requestdeposit extends Component
             DB::transaction(function ($q) {
                 $deposit = Deposit::findOrFail($this->process);
                 $deposit->processed_at = now();
+                $deposit->admin_id = auth()->id();
                 $deposit->save();
 
                 $balance = new Balance();
