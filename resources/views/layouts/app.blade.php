@@ -112,7 +112,10 @@
                                 strpos($currentUrl, '/logdownline') === 0 ||
                                 strpos($currentUrl, '/logsponsor') === 0 ||
                                 strpos($currentUrl, '/logdeposit') === 0) menu-open @endif">
-                            <a href="#" class="nav-link  @if (strpos($currentUrl, '/datamember') === 0 || strpos($currentUrl, '/datakasbon') === 0) active @endif">
+                            <a href="#" class="nav-link  @if (strpos($currentUrl, '/logbonus') === 0 ||
+                                    strpos($currentUrl, '/logdownline') === 0 ||
+                                    strpos($currentUrl, '/logsponsor') === 0 ||
+                                    strpos($currentUrl, '/logdeposit') === 0) active @endif">
                                 <i class="nav-icon fas fa-circle"></i>
                                 <p>
                                     Member Log
