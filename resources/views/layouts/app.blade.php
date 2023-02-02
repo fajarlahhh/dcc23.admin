@@ -154,7 +154,8 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a href="/requestactivation" class="nav-link">
+                            <a href="/requestactivation"
+                                class="nav-link @if (strpos($currentUrl, '/requestactivation') === 0) active @endif">
                                 <i class="nav-icon  fas fa-circle"></i>
                                 <p>
                                     Req. Activation
@@ -162,7 +163,8 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/requestdeposit" class="nav-link">
+                            <a href="/requestdeposit"
+                                class="nav-link @if (strpos($currentUrl, '/requestdeposit') === 0) active @endif">
                                 <i class="nav-icon  fas fa-circle"></i>
                                 <p>
                                     Req. Deposit
@@ -170,7 +172,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/requestwd" class="nav-link">
+                            <a href="/requestwd" class="nav-link @if (strpos($currentUrl, '/requestwd') === 0) active @endif">
                                 <i class="nav-icon  fas fa-circle"></i>
                                 <p>
                                     Req. WD
@@ -180,7 +182,7 @@
                         @if (auth()->user()->username == 'admin')
                             <li class="nav-item">
                                 <a href="/dataadmin"
-                                    class="nav-link @if (strpos($currentUrl, '/dailybonus') === 0) active @endif">
+                                    class="nav-link @if (strpos($currentUrl, '/dataadmin') === 0) active @endif">
                                     <i class="nav-icon  fas fa-circle"></i>
                                     <p>
                                         Admin Data

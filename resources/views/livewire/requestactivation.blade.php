@@ -68,7 +68,7 @@
                                     <td>
                                         @if ($status == 1)
                                             @if ($activate == $row->id)
-                                                <a href="javascript:;" class="btn btn-success" wire:click="status">Yes,
+                                                <a href="javascript:;" class="btn btn-success" wire:click="active">Yes,
                                                     Activate</a>
                                                 <a href="javascript:;" class="btn btn-secondary"
                                                     wire:click="setActivate">Cancel</a>

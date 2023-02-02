@@ -71,14 +71,14 @@
                                     @if ($status == 1)
                                         <td>
                                             @if ($process == $row->id)
-                                                <a href="javascript:;" class="btn btn-success" wire:click="status">Yes,
+                                                <a href="javascript:;" class="btn btn-success" wire:click="done">Yes,
                                                     Process</a>
-                                                <a href="javascript:;" class="btn btn-secondary"
+                                                <a href="javascript:;" class="btn btn-warning"
                                                     wire:click="setProcess">Cancel</a>
                                             @elseif ($delete == $row->id)
                                                 <a href="javascript:;" class="btn btn-success" wire:click="delete">Yes,
                                                     Delete</a>
-                                                <a href="javascript:;" class="btn btn-secondary"
+                                                <a href="javascript:;" class="btn btn-warning"
                                                     wire:click="setDelete">Cancel</a>
                                             @else
                                                 <a href="javascript:;" class="btn btn-secondary"
