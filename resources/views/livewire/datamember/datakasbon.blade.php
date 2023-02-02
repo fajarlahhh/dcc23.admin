@@ -15,7 +15,7 @@
                         <form wire:submit.prevent="submit" class="form-inline">
                             <select class="form-control" data-placeholder="Select a member" wire:model.defer="insert"
                                 data-dropdown-css-class="select2-purple">
-                                <option value="">-- Pilih User --</option>
+                                <option value="">-- Choose Member --</option>
                                 @foreach (\App\Models\User::whereNull('kas_bon')->whereNotNull('upline_id')->get() as $row)
                                     <option value="{{ $row->getKey() }}"> {{ $row->username }}</option>
                                 @endforeach

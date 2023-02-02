@@ -108,6 +108,48 @@
                                 </li>
                             </ul>
                         </li>
+                        <li class="nav-item @if (strpos($currentUrl, '/logbonus') === 0 ||
+                                strpos($currentUrl, '/logdownline') === 0 ||
+                                strpos($currentUrl, '/logsponsor') === 0 ||
+                                strpos($currentUrl, '/logdeposit') === 0) menu-open @endif">
+                            <a href="#" class="nav-link  @if (strpos($currentUrl, '/datamember') === 0 || strpos($currentUrl, '/datakasbon') === 0) active @endif">
+                                <i class="nav-icon fas fa-circle"></i>
+                                <p>
+                                    Member Log
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="/logbonus"
+                                        class="nav-link @if (strpos($currentUrl, '/logbonus') === 0) active @endif">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Bonus</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/logdeposit"
+                                        class="nav-link @if (strpos($currentUrl, '/logdeposit') === 0) active @endif">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Deposit</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/logdownline"
+                                        class="nav-link @if (strpos($currentUrl, '/logdownline') === 0) active @endif">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Downline</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/logsponsor"
+                                        class="nav-link @if (strpos($currentUrl, '/logsponsor') === 0) active @endif">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Sponsor</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
                         <li class="nav-item">
                             <a href="/requestactivation" class="nav-link">
                                 <i class="nav-icon  fas fa-circle"></i>
@@ -134,7 +176,8 @@
                         </li>
                         @if (auth()->user()->username == 'admin')
                             <li class="nav-item">
-                                <a href="/dataadmin" class="nav-link @if (strpos($currentUrl, '/dailybonus') === 0) active @endif">
+                                <a href="/dataadmin"
+                                    class="nav-link @if (strpos($currentUrl, '/dailybonus') === 0) active @endif">
                                     <i class="nav-icon  fas fa-circle"></i>
                                     <p>
                                         Admin Data

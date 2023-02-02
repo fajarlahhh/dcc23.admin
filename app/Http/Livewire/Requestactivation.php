@@ -152,7 +152,7 @@ class Requestactivation extends Component
                 if (is_null($row['activated_at'])) {
                     array_push($dataInvalid, [
                         'user_id' => $row['id'],
-                        'downline_id' => $user->getKey,
+                        'downline_id' => $user->getKey(),
                         'amount' => $user->package->value,
                         'team' => substr($network, -1),
                         'created_at' => now(),
