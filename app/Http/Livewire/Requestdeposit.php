@@ -35,15 +35,17 @@ class Requestdeposit extends Component
         if (Deposit::findOrFail($this->process)->processed_at == null) {
             DB::transaction(function ($q) {
                 $deposit = Deposit::findOrFail($this->process);
-                $deposit->processed_at = now();
-                $deposit->admin_id = auth()->id();
-                $deposit->save();
+                if ($deposit->processed_at == null) {
+                    $deposit->processed_at = now();
+                    $deposit->admin_id = auth()->id();
+                    $deposit->save();
 
-                $balance = new Balance();
-                $balance->description = "Top up";
-                $balance->amount = $deposit->amount;
-                $balance->user_id = $deposit->user_id;
-                $balance->save();
+                    $balance = new Balance();
+                    $balance->description = "Top up";
+                    $balance->amount = $deposit->amount;
+                    $balance->user_id = $deposit->user_id;
+                    $balance->save();
+                }
             });
         }
     }

@@ -22,10 +22,12 @@ class Requestwd extends Component
     public function submit()
     {
         $wd = Withdrawal::findOrFail($this->process);
-        $wd->processed_at = now();
-        $wd->admin_id = auth()->id();
-        $wd->txid = $this->txid;
-        $wd->save();
+        if ($wd->processed_at == null) {
+            $wd->processed_at = now();
+            $wd->admin_id = auth()->id();
+            $wd->txid = $this->txid;
+            $wd->save();
+        }
     }
 
     public function mount()

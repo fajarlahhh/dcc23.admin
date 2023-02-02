@@ -46,11 +46,14 @@ class Requestactivation extends Component
             $parentLength = 0;
 
             $deposit = Deposit::findOrFail($this->activate);
+            $user = User::findOrFail($deposit->user_id);
+            if ($deposit->processed_at) {
+                session()->flash('message', 'success|Activation for ' . $user->username . ' succesfully');
+                return $this->redirect(request()->header('Referer'));
+            }
             $deposit->processed_at = now();
             $deposit->admin_id = auth()->id();
             $deposit->save();
-
-            $user = User::findOrFail($deposit->user_id);
 
             if ($deposit->registration == 2) {
                 $user->reinvest = $user->reinvest + 1;
