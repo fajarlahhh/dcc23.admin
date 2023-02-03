@@ -33,6 +33,7 @@
                                 <th>Show Password</th>
                                 <th>PIN</th>
                                 <th>Name</th>
+                                <th>Phone</th>
                                 <th>Wallet</th>
                                 <th>Package</th>
                                 <th>Upline</th>
@@ -60,6 +61,7 @@
                                         {{ $row->pin }}</td>
                                     <td>
                                         {{ $row->name }}</td>
+                                    <td>{{ $row->phone }}</td>
                                     <td>
                                         {{ substr($row->wallet, 0, 4) . '....' . substr($row->wallet, -4) }}
                                     </td>

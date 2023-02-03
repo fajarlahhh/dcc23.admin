@@ -37,6 +37,7 @@
                                 <th>Datetime</th>
                                 <th>Username</th>
                                 <th>Name</th>
+                                <th>Phone</th>
                                 <th>To Wallet</th>
                                 <th>Amount</th>
                                 @if ($status == 1)
@@ -57,6 +58,7 @@
                                         {{ $row->user->username }}</td>
                                     <td>
                                         {{ $row->user->name }}</td>
+                                    <td>{{ $row->phone }}</td>
                                     <td>
                                         {{ $row->to_wallet }}
                                     </td>

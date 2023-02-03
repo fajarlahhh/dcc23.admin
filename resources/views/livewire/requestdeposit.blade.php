@@ -37,6 +37,7 @@
                                 <th>Datetime</th>
                                 <th>Username</th>
                                 <th>Name</th>
+                                <th>Phone</th>
                                 <th>From</th>
                                 <th>To Wallet</th>
                                 <th>Amount</th>
@@ -58,6 +59,7 @@
                                         {{ $row->user->username }}</td>
                                     <td>
                                         {{ $row->user->name }}</td>
+                                    <td>{{ $row->phone }}</td>
                                     <td>
                                         Wallet : {{ $row->from_wallet }}<br>
                                         TXID : {{ $row->txid }}

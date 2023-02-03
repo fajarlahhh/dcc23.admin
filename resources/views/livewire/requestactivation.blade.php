@@ -28,6 +28,7 @@
                                 <th>Datetime</th>
                                 <th>Username</th>
                                 <th>Name</th>
+                                <th>Phone</th>
                                 <th>Sponsor</th>
                                 <th>From</th>
                                 <th>To Wallet</th>
@@ -51,6 +52,7 @@
                                         {{ $row->user->username }}</td>
                                     <td>
                                         {{ $row->user->name }}</td>
+                                    <td>{{ $row->phone }}</td>
                                     <td>
                                         {{ $row->user->sponsor ? $row->user->sponsor->username : '' }}
                                     </td>
