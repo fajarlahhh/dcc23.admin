@@ -92,7 +92,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <th colspan="5">Total</th>
+                                <th colspan="6">Total</th>
                                 <th>{{ number_format($data->sum('amount')) }}</th>
                             </tr>
                         </tfoot>
@@ -100,9 +100,9 @@
                 </div>
                 <div class="card-footer">
                     <div class="row">
-                        <div class="col-md-6">{{ $data->links() }}</div>
+                        <div class="col-md-6">&nbsp;</div>
                         <div class="col-md-6 text-right">
-                            Total Data : {{ $data->total() }}
+                            Total Data : {{ $data->count() }}
                         </div>
                     </div>
                 </div>

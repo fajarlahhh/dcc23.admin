@@ -9,12 +9,9 @@ use App\Models\User;
 use App\Models\UserView;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
-use Livewire\WithPagination;
 
 class Requestactivation extends Component
 {
-    use WithPagination;
-    protected $paginationTheme = 'bootstrap';
     public $cari, $activate, $delete, $upline, $status = 1, $date;
     protected $queryString = ['date', 'status'];
 
@@ -198,8 +195,8 @@ class Requestactivation extends Component
             $this->date = null;
         }
         return view('livewire.requestactivation', [
-            'i' => ($this->page - 1) * 10,
-            'data' => Deposit::with('user')->when($this->status == 2, fn($q) => $q->where('processed_at', 'like', $this->date . '%'))->whereNotNull('registration')->when($this->status == 1, fn($q) => $q->whereNull('processed_at'))->orderBy('created_at')->paginate(10),
+            'i' => 0,
+            'data' => Deposit::with('user')->when($this->status == 2, fn($q) => $q->where('processed_at', 'like', $this->date . '%'))->whereNotNull('registration')->when($this->status == 1, fn($q) => $q->whereNull('processed_at'))->orderBy('created_at')->get(),
         ]);
     }
 }

@@ -59,7 +59,7 @@
                                         {{ $row->user->username }}</td>
                                     <td>
                                         {{ $row->user->name }}</td>
-                                    <td>{{ $row->phone }}</td>
+                                    <td>{{ $row->user->phone }}</td>
                                     <td>
                                         Wallet : {{ $row->from_wallet }}<br>
                                         TXID : {{ $row->txid }}
@@ -104,9 +104,9 @@
                 </div>
                 <div class="card-footer">
                     <div class="row">
-                        <div class="col-md-6">{{ $data->links() }}</div>
+                        <div class="col-md-6">&nbsp;</div>
                         <div class="col-md-6 text-right">
-                            Total Data : {{ $data->total() }}
+                            Total Data : {{ $data->count() }}
                         </div>
                     </div>
                 </div>
