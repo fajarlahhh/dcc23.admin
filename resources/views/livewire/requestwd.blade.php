@@ -58,7 +58,7 @@
                                         {{ $row->user->username }}</td>
                                     <td>
                                         {{ $row->user->name }}</td>
-                                    <td>{{ $row->phone }}</td>
+                                    <td>{{ $row->user->phone }}</td>
                                     <td>
                                         {{ $row->to_wallet }}
                                     </td>
