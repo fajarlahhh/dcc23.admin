@@ -27,6 +27,7 @@
                             <tr>
                                 <th style="width: 10px">#</th>
                                 <th>Datetime</th>
+                                <th>Username</th>
                                 <th>Description</th>
                                 <th>Amount</th>
                                 <th>Valid</th>
@@ -39,6 +40,8 @@
                                         {{ ++$i }}</td>
                                     <td>
                                         {{ $row->created_at }}</td>
+                                    <td>
+                                        {{ $row->user->username }}</td>
                                     <td>
                                         {{ $row->description }}</td>
                                     <td>
