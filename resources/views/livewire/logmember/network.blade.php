@@ -103,7 +103,7 @@
                                         {{ number_format((int) $downline2Left->first()->valid_right - (int) $downline2Left->first()->invalidRight->sum('amount')) }}
                                         <br>
                                         @if ($downline2Left->first()->downline->count() > 0)
-                                            <a href="/downline?username={{ $downline2Left->first()->username }}"
+                                            <a href="/lognetworkusername={{ $downline2Left->first()->username }}"
                                                 class="btn btn-sm btn-secondary">Next</a>
                                         @endif
                                     @endif
@@ -131,7 +131,7 @@
                                         {{ number_format((int) $downline2Right->first()->valid_right - (int) $downline2Right->first()->invalidRight->sum('amount')) }}
                                         <br>
                                         @if ($downline2Right->first()->downline->count() > 0)
-                                            <a href="/downline?username={{ $downline2Right->first()->username }}"
+                                            <a href="/lognetworkusername={{ $downline2Right->first()->username }}"
                                                 class="btn btn-sm btn-secondary">Next</a>
                                         @endif
                                     @endif
@@ -159,7 +159,7 @@
                                         {{ number_format((int) $downline12Left->first()->valid_right - (int) $downline12Left->first()->invalidRight->sum('amount')) }}
                                         <br>
                                         @if ($downline12Left->first()->downline->count() > 0)
-                                            <a href="/downline?username={{ $downline12Left->first()->username }}"
+                                            <a href="/lognetworkusername={{ $downline12Left->first()->username }}"
                                                 class="btn btn-sm btn-secondary">Next</a>
                                         @endif
                                     @endif
@@ -187,7 +187,7 @@
                                         {{ number_format((int) $downline12Right->first()->valid_right - (int) $downline12Right->first()->invalidRight->sum('amount')) }}
                                         <br>
                                         @if ($downline12Right->first()->downline->count() > 0)
-                                            <a href="/downline?username={{ $downline12Right->first()->username }}"
+                                            <a href="/lognetworkusername={{ $downline12Right->first()->username }}"
                                                 class="btn btn-sm btn-secondary">Next</a>
                                         @endif
                                     @endif
