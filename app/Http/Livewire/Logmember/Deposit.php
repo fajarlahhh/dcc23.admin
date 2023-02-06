@@ -17,7 +17,7 @@ class Deposit extends Component
     public function render()
     {
         return view('livewire.logmember.deposit', [
-            'data' => ModelsDeposit::with('user')->when($this->member, fn($q) => $q->where('user_id', $this->member))->where('created_at', 'like', $this->date . '%')->get(),
+            'data' => ModelsDeposit::with('user')->when($this->member, fn($q) => $q->where('user_id', $this->member))->whereNotNull('processed_at')->where('created_at', 'like', $this->date . '%')->get(),
         ]);
     }
 }
