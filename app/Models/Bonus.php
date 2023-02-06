@@ -16,4 +16,9 @@ class Bonus extends Model
     {
         return $query->whereNull('invalid');
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

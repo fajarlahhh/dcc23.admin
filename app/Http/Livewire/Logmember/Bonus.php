@@ -17,7 +17,7 @@ class Bonus extends Component
     public function render()
     {
         return view('livewire.logmember.bonus', [
-            'data' => ModelsBonus::when($this->member, fn($q) => $q->where('user_id', $this->member))->where('created_at', 'like', $this->date . '%')->get(),
+            'data' => ModelsBonus::with('user')->when($this->member, fn($q) => $q->where('user_id', $this->member))->where('created_at', 'like', $this->date . '%')->get(),
         ]);
     }
 }
