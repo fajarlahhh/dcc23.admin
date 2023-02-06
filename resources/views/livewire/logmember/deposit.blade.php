@@ -71,6 +71,12 @@
                                 </tr>
                             @endforeach
                         </tbody>
+                        <tfoot>
+                            <tr>
+                                <th colspan="5">Total</th>
+                                <th>{{ number_format($data->sum('amount')) }}</th>
+                            </tr>
+                        </tfoot>
                     </table>
                 </div>
             </div>
