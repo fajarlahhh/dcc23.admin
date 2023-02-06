@@ -102,7 +102,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <th colspan="8">Total</th>
+                                <th colspan="7">Total</th>
                                 <th>{{ number_format($data->sum('amount')) }}</th>
                             </tr>
                         </tfoot>
