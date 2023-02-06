@@ -7,32 +7,18 @@
 
     <section class="content">
         <div class="container-fluid">
-            <div class="card card-primary card-tabs">
-                <div class="card-body">
-                    <select class="form-control" data-placeholder="Select a member" wire:model.lazy="member"
-                        data-dropdown-css-class="select2-purple">
-                        <option value="">-- Choose Member --</option>
-                        @foreach (\App\Models\User::all() as $row)
-                            <option value="{{ $row->getKey() }}"> {{ $row->username }}</option>
-                        @endforeach
-                    </select>
-                </div>
-            </div>
-
             <div class="card card-default color-palette-box">
                 <div class="card-header">
                     <div class="card-tools form-inline">
-                        <select class="form-control" aria-label="Default select example" wire:model="month">
-                            @for ($m = 1; $m <= 12; $m++)
-                                <option value="{{ sprintf('%02s', $m) }}">
-                                    {{ DateTime::createFromFormat('!m', $m)->format('F') }}</option>
-                            @endfor
-                        </select>&nbsp;
-                        <select class="form-control" aria-label="Default select example" wire:model="year">
-                            @for ($y = 2023; $y <= date('Y'); $y++)
-                                <option value="{{ $y }}">{{ $y }}</option>
-                            @endfor
+                        <select class="form-control" data-placeholder="Select a member" wire:model.lazy="member"
+                            data-dropdown-css-class="select2-purple">
+                            <option value="">-- Choose Member --</option>
+                            @foreach (\App\Models\User::all() as $row)
+                                <option value="{{ $row->getKey() }}"> {{ $row->username }}</option>
+                            @endforeach
                         </select>
+                        <input class="form-control" style="width: 160px" type="date" wire:model.lazy="date"
+                            data-single-mode="true">
                     </div>
                 </div>
                 <div class="card-body table-responsive">

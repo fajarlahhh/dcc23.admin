@@ -7,18 +7,17 @@ use Livewire\Component;
 
 class Bonus extends Component
 {
-    public $member, $year, $month;
+    public $member, $date;
 
     public function mount()
     {
-        $this->year = $this->year ?: date('Y');
-        $this->month = $this->month ?: date('m');
+        $this->date = $this->date ?: date('Y-m-d');
     }
 
     public function render()
     {
         return view('livewire.logmember.bonus', [
-            'data' => $this->member ? ModelsBonus::where('user_id', $this->member)->where('created_at', 'like', $this->year . '-' . $this->month . '%')->get() : collect([]),
+            'data' => ModelsBonus::when($this->member, fn($q) => $q->where('user_id', $this->member))->where('created_at', 'like', $this->date . '%')->get(),
         ]);
     }
 }

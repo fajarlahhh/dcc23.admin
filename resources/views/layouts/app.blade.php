@@ -137,7 +137,7 @@
                                         <p>Deposit</p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
+                                {{-- <li class="nav-item">
                                     <a href="/logdownline"
                                         class="nav-link @if (strpos($currentUrl, '/logdownline') === 0) active @endif">
                                         <i class="far fa-circle nav-icon"></i>
@@ -150,7 +150,7 @@
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Sponsor</p>
                                     </a>
-                                </li>
+                                </li> --}}
                             </ul>
                         </li>
                         <li class="nav-item">
