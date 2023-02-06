@@ -26,4 +26,5 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/changepassword', \App\Http\Livewire\Changepassword::class);
     Route::get('/logbonus', \App\Http\Livewire\Logmember\Bonus::class);
     Route::get('/logdeposit', \App\Http\Livewire\Logmember\Deposit::class);
+    Route::get('/lognetwork', \App\Http\Livewire\Logmember\Network::class);
 });

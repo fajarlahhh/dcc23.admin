@@ -110,11 +110,11 @@
                         </li>
                         <li class="nav-item @if (strpos($currentUrl, '/logbonus') === 0 ||
                                 strpos($currentUrl, '/logdownline') === 0 ||
-                                strpos($currentUrl, '/logsponsor') === 0 ||
+                                strpos($currentUrl, '/lognetwork') === 0 ||
                                 strpos($currentUrl, '/logdeposit') === 0) menu-open @endif">
                             <a href="#" class="nav-link  @if (strpos($currentUrl, '/logbonus') === 0 ||
                                     strpos($currentUrl, '/logdownline') === 0 ||
-                                    strpos($currentUrl, '/logsponsor') === 0 ||
+                                    strpos($currentUrl, '/lognetwork') === 0 ||
                                     strpos($currentUrl, '/logdeposit') === 0) active @endif">
                                 <i class="nav-icon fas fa-circle"></i>
                                 <p>
@@ -137,14 +137,14 @@
                                         <p>Deposit</p>
                                     </a>
                                 </li>
-                                {{-- <li class="nav-item">
-                                    <a href="/logdownline"
-                                        class="nav-link @if (strpos($currentUrl, '/logdownline') === 0) active @endif">
+                                <li class="nav-item">
+                                    <a href="/lognetwork"
+                                        class="nav-link @if (strpos($currentUrl, '/lognetwork') === 0) active @endif">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Downline</p>
+                                        <p>Network</p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
+                                {{-- <li class="nav-item">
                                     <a href="/logsponsor"
                                         class="nav-link @if (strpos($currentUrl, '/logsponsor') === 0) active @endif">
                                         <i class="far fa-circle nav-icon"></i>
