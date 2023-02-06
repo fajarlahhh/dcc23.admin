@@ -21,7 +21,7 @@ class Network extends Component
         );
 
         if ($this->username) {
-            $data = $data->where('id', $this->username);
+            $data = $data->where('username', $this->username);
         }
         return view('livewire.logmember.network', [
             'data' => $data->first(),
