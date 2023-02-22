@@ -66,7 +66,7 @@
                                                 </form>
                                             @else
                                                 <a href="javascript:;" class="btn btn-secondary"
-                                                    wire:click="setProcess({{ $row->to_wallet }})">Process
+                                                    wire:click="setProcess('{{ $row->to_wallet }}')">Process
                                                 </a>
                                             @endif
                                         </td>
