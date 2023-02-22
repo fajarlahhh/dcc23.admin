@@ -34,10 +34,6 @@
                         <thead>
                             <tr>
                                 <th style="width: 10px">#</th>
-                                <th>Datetime</th>
-                                <th>Username</th>
-                                <th>Name</th>
-                                <th>Phone</th>
                                 <th>To Wallet</th>
                                 <th>Amount</th>
                                 @if ($status == 1)
@@ -53,13 +49,6 @@
                                     <td>
                                         {{ ++$i }}</td>
                                     <td>
-                                        {{ $row->created_at }}</td>
-                                    <td>
-                                        {{ $row->user->username }}</td>
-                                    <td>
-                                        {{ $row->user->name }}</td>
-                                    <td>{{ $row->user->phone }}</td>
-                                    <td>
                                         {{ $row->to_wallet }}
                                     </td>
                                     <td>
@@ -67,7 +56,7 @@
                                     </td>
                                     @if ($status == 1)
                                         <td>
-                                            @if ($process == $row->id)
+                                            @if ($process == $row->to_wallet)
                                                 <form wire:submit.prevent="submit">
                                                     <input type="text" class="form-control" wire:model.defer="txid"
                                                         placeholder="TX ID" autocomplete="off">
@@ -77,7 +66,7 @@
                                                 </form>
                                             @else
                                                 <a href="javascript:;" class="btn btn-secondary"
-                                                    wire:click="setProcess({{ $row->id }})">Process
+                                                    wire:click="setProcess({{ $row->to_wallet }})">Process
                                                 </a>
                                             @endif
                                         </td>
@@ -92,7 +81,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <th colspan="6">Total</th>
+                                <th colspan="3">Total</th>
                                 <th>{{ number_format($data->sum('amount')) }}</th>
                             </tr>
                         </tfoot>

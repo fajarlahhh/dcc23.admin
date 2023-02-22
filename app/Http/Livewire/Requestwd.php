@@ -2,8 +2,9 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Withdrawal;
 use Livewire\Component;
+use App\Models\Withdrawal;
+use Illuminate\Support\Facades\DB;
 
 class Requestwd extends Component
 {
@@ -18,13 +19,11 @@ class Requestwd extends Component
 
     public function submit()
     {
-        $wd = Withdrawal::findOrFail($this->process);
-        if ($wd->processed_at == null) {
-            $wd->processed_at = now();
-            $wd->admin_id = auth()->id();
-            $wd->txid = $this->txid;
-            $wd->save();
-        }
+        Withdrawal::where('to_wallet', $this->process)->whereNull('processed_at')->update([
+            'processed_at' => now(),
+            'admin_id' => auth()->id(),
+            'txid' => $this->txid,
+        ]);
     }
 
     public function mount()
@@ -37,7 +36,7 @@ class Requestwd extends Component
     {
         return view('livewire.requestwd', [
             'i' => 0,
-            'data' => Withdrawal::with('user')->when($this->status == 1, fn($q) => $q->whereNull('processed_at'))->when($this->status == 2, fn($q) => $q->where('processed_at', 'like', $this->year . '-' . $this->month . '%'))->orderBy('created_at')->get(),
+            'data' => Withdrawal::select('to_wallet', DB::raw('sum(amount) amount'))->when($this->status == 1, fn ($q) => $q->whereNull('processed_at'))->when($this->status == 2, fn ($q) => $q->where('processed_at', 'like', $this->year . '-' . $this->month . '%'))->groupBy('to_wallet')->orderBy('created_at')->get(),
         ]);
     }
 }
